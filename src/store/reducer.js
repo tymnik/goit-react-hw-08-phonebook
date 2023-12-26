@@ -8,14 +8,16 @@ const deleteContact = createAsyncThunk(
   deleteContactApi
 );
 
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+  filter: '',
+};
+
 const contactSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-    filter: '',
-  },
+  initialState,
   reducers: {
     setFilter: (state, action) => {
       state.filter = action.payload;

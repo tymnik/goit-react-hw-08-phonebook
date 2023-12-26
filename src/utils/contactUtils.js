@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../store/reducer';
+import { selectVisibleContacts } from '../store/selectors';
 
 export const useContacts = () => {
   const dispatch = useDispatch();
@@ -9,14 +10,7 @@ export const useContacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const contacts = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.contacts.filter);
-
-  const filteredContacts = contacts.filter(contact =>
-    contact.name && filter
-      ? contact.name.toLowerCase().includes(filter.toLowerCase())
-      : true
-  );
+  const filteredContacts = useSelector(selectVisibleContacts);
 
   return { filteredContacts };
 };
