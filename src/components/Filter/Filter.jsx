@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../store/reducer';
+import { addFilter } from 'store/filter/slice';
 import styles from './Filter.module.css';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
+    const { filter } = useSelector(state => state);
 
   const handleFilterChange = e => {
-    dispatch(setFilter(e.target.value.toLowerCase().trim()));
+    dispatch(addFilter(e.target.value.toLowerCase().trim()));
   };
 
   return (
