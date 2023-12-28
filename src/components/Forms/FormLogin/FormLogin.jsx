@@ -8,43 +8,32 @@ const FormLogin = ({ login }) => {
       password: e.target.elements.password.value,
     });
   };
+
   return (
-    <div className="card p-5 mx-auto" style={{ width: 500 }}>
+    <div style={{ width: 500 }}>
       <form onSubmit={handleSubmit}>
-        <Link type="button" className="btn btn-primary" to="/">
-          go home
+        <Link type="button" to="/">
+          Go Home
         </Link>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
+        <div>
+          <label htmlFor="exampleInputEmail1">Email address</label>
           <input
             type="email"
             name="email"
-            className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
+          <div id="emailHelp">
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-          />
+        <div>
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input name="password" type="password" id="exampleInputPassword1" />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
-      <Link to="/registration">Registration</Link>
+      <Link to="/register">Registration</Link>
     </div>
   );
 };
