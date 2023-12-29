@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const FormRegistration = ({ register }) => {
+  const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
-    const newUser = {
-      firstName: e.target.elements.name.value,
-      email: e.target.elements.email.value,
-      password: e.target.elements.password.value,
-    };
-    register(newUser);
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
   };
+
   return (
     <div style={{ width: 500 }}>
       <form onSubmit={handleSubmit}>
@@ -38,7 +45,7 @@ const FormRegistration = ({ register }) => {
           </label>
           <input name="password" type="password" id="exampleInputPassword1" />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Sign Up</button>
       </form>
       <Link to="/login">Login</Link>
     </div>

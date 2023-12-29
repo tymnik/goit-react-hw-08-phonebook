@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const FormLogin = ({ login }) => {
-  const handleSubmit = e => {
+  const dispatch = useDispatch();
+
+    const handleSubmit = e => {
     e.preventDefault();
-    login({
-      email: e.target.elements.email.value,
-      password: e.target.elements.password.value,
-    });
+    const form = e.currentTarget;
+    dispatch(
+      login({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
   };
 
   return (

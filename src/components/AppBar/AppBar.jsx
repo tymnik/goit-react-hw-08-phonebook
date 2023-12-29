@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import { useAuth } from '../../hooks/useAuth';
 import { NavLink } from 'react-router-dom';
+import UserMenu from 'components/UserMenu/UserMenu';
+import AuthNav from 'components/AuthNav/AuthNav';
 import styles from './AppBar.module.css';
 
 function AppBar() {
-  const [isAuth, setIsAuth] = useState(false);
-
- const handleClick = () => {
-   setIsAuth(prevAuth => !prevAuth);
- };
+   const { isLoggedIn } = useAuth();
 
   return (
     <div className={styles.navBar}>
@@ -18,15 +16,13 @@ function AppBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink className={styles.navLink} to="/contacts">
-            Contacts
-          </NavLink>
+          {isLoggedIn ? (
+            <NavLink to="contacts">Contacts</NavLink>
+          ) : (
+            <AuthNav></AuthNav>
+          )}
         </li>
-        <li>
-          <button onClick={handleClick}>
-            {isAuth ? 'LogOut' : 'LogIn'}
-          </button>
-        </li>
+        <li>{isLoggedIn && <UserMenu />}</li>
       </ul>
     </div>
   );
