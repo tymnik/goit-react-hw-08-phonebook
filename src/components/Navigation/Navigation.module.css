@@ -1,0 +1,37 @@
+.navBar {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.navList {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+
+    @media screen and (min-width: 744px) {
+        justify-content: start;
+    }
+}
+
+.navLink {
+    color: white;
+    font-size: 22px;
+    padding: 10px 20px;
+    font-weight: 600;
+
+    &:hover,
+    &:focus {
+        color: #000000;
+        transition: 1.5ms ease-in-out;
+    }
+
+    @media screen and (min-width: 744px) {
+        font-size: 34px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-size: 40px;
+    }
+}

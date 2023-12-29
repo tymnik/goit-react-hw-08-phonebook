@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 const FormLogin = ({ login }) => {
-  const dispatch = useDispatch();
-
-    const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
-      login({
+
+    try {
+      await login({
         email: form.elements.email.value,
         password: form.elements.password.value,
-      })
-    );
-    form.reset();
+      });
+      console.log('Login successful');
+      form.reset();
+    } catch (error) {
+      console.error('Login failed', error);
+    }
   };
 
   return (
