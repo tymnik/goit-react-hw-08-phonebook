@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import { Suspense, lazy } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Loader/Loader';
 import LoginPage from '../pages/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage';
@@ -13,6 +15,7 @@ const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const App = () => {
   return (
     <Suspense fallback={<Loader />}>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

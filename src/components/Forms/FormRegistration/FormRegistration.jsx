@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { register } from 'store/auth/operations';
 import Button from '@mui/material/Button';
 import { grey } from '@mui/material/colors';
+import { toast } from 'react-toastify';
 import styles from './FormRegistration.module.css';
 
 const FormRegistration = () => {
@@ -17,7 +18,31 @@ const FormRegistration = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .then(res => {
+        toast.success('Nice to meet you!', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      })
+      .catch(e => {
+        toast.warn('Try again!', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      });
     form.reset();
   };
 

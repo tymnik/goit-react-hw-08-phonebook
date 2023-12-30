@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'store/auth/operations';
 import Button from '@mui/material/Button';
 import { grey } from '@mui/material/colors';
+import { toast } from 'react-toastify';
 import styles from './FormLogin.module.css';
 
 const FormLogin = () => {
@@ -15,7 +16,32 @@ const FormLogin = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .unwrap()
+      .then(res => {
+        toast.success('Hi, there!', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      })
+      .catch(e => {
+        toast.warn('Oops! Invalid email or password!', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      });
     form.reset();
   };
 
