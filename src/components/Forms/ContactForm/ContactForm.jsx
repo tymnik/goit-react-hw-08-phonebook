@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useAuth } from 'hooks/useAuth';
+import { useState } from 'react';
 import { addContact } from 'store/contacts/operations';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
-  const { contacts } = useSelector(state => state);
-  const { items } = contacts;
+  const { contacts } = useAuth();
+  const items = contacts || [];
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -46,7 +47,6 @@ const ContactForm = () => {
           type="text"
           name="name"
           value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           onChange={handleChange}
           required
           className={styles.inputField}
@@ -58,7 +58,6 @@ const ContactForm = () => {
           type="tel"
           name="number"
           value={number}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           onChange={handleChange}
           required
           className={styles.inputField}

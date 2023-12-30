@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { register } from 'store/auth/operations';
 
-const FormRegistration = ({register}) => {
-  const handleSubmit = async e => {
+const FormRegistration = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    try {
-      await register({
+    dispatch(
+      register({
         name: form.elements.name.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
-      });  
-      console.log('Registration successful');
-      form.reset();
-    } catch (error) {
-      console.error('Registration failed', error);
-    }
+      })
+    );
+    form.reset();
   };
 
   return (

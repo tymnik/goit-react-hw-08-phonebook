@@ -1,11 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
 import { addFilter } from 'store/filter/slice';
 import styles from './Filter.module.css';
 
 const Filter = () => {
   const dispatch = useDispatch();
-    const { filter } = useSelector(state => state);
+    const { filter } = useAuth();
 
   const handleFilterChange = e => {
     dispatch(addFilter(e.target.value.toLowerCase().trim()));

@@ -1,12 +1,8 @@
 import FormRegistration from '../components/Forms/FormRegistration/FormRegistration';
 import React from 'react';
 
-const RegistrationPage = () => {
-  const registerUser = newUser => {
-    console.log('Registering user:', newUser);
-  };
+export default function RegistrationPage() {
+  return <FormRegistration />;
+}
 
-  return <FormRegistration register={registerUser} />;
-};
 
-export default RegistrationPage;
