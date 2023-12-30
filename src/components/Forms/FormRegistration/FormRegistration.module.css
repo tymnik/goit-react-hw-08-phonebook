@@ -1,0 +1,30 @@
+.userForm {
+    margin: 0 auto;
+    width: 300px;
+    padding: 20px 0 0 20px;
+}
+
+@media screen and (min-width: 744px) {
+    .userForm {
+        width: 500px;
+        padding-left: 20px;
+        margin: unset;
+    }
+}
+
+.userInputLabel {
+    font-weight: 500;
+}
+
+.userFormInput {
+    border: 2px solid #ADCFFF;
+    border-radius: 20px;
+    width: 100%;
+    height: 30px;
+    margin: 10px auto;
+}
+
+.userFormInput:hover,
+.userFormInput:focus {
+    border: 2px solid #FF6314;
+}

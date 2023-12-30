@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { addContact } from 'store/contacts/operations';
 import { useDispatch } from 'react-redux';
 import styles from './ContactForm.module.css';
+import Button from '@mui/material/Button';
+import { orange } from '@mui/material/colors';
 
 const ContactForm = () => {
   const { contacts } = useAuth();
@@ -39,6 +41,9 @@ const ContactForm = () => {
     else if (name === 'number') setNumber(value);
   };
 
+    const color = orange[500];
+
+
   return (
     <form onSubmit={addNewContact} className={styles.inputForm}>
       <label className={styles.inputLabel}>
@@ -65,9 +70,7 @@ const ContactForm = () => {
           className={styles.inputField}
         />
       </label>
-      <button type="submit" className={styles.addBtn}>
-        Add Contact
-      </button>
+      <Button sx={{ color }}>Add Contact</Button>
     </form>
   );
 };

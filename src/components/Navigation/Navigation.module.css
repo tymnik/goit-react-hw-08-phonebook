@@ -1,8 +1,5 @@
-.navBar {
+.header {
     width: 100%;
-    padding: 20px;
-    background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 
 .navList {
@@ -18,7 +15,7 @@
 .navLink {
     color: white;
     font-size: 22px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     font-weight: 600;
 
     &:hover,

@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'store/auth/operations';
+import Button from '@mui/material/Button';
+import { grey } from '@mui/material/colors';
+import styles from './FormRegistration.module.css';
 
 const FormRegistration = () => {
   const dispatch = useDispatch();
@@ -19,37 +21,57 @@ const FormRegistration = () => {
     form.reset();
   };
 
+  const backgroundColor = grey[900];
+
   return (
-    <div style={{ width: 500 }}>
+    <div className={styles.userForm}>
       <form onSubmit={handleSubmit}>
-        <Link type="button" to="/">
-          Go Home
-        </Link>
         <div>
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1" className={styles.userInputLabel}>
+            Email address
+          </label>
           <input
             type="email"
             name="email"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            className={styles.userFormInput}
           />
-          <div id="emailHelp">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div>
-          <label htmlFor="exampleInputName">Name</label>
-          <input type="text" name="name" id="exampleInputName" />
+          <label htmlFor="exampleInputName" className={styles.userInputLabel}>
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="exampleInputName"
+            className={styles.userFormInput}
+          />
         </div>
         <div>
-          <label htmlFor="exampleInputPassword1" className="form-label">
+          <label
+            htmlFor="exampleInputPassword1"
+            className={styles.userInputLabel}
+          >
             Password
           </label>
-          <input name="password" type="password" id="exampleInputPassword1" />
+          <input
+            name="password"
+            type="password"
+            id="exampleInputPassword1"
+            className={styles.userFormInput}
+          />
         </div>
-        <button type="submit">Sign Up</button>
+        <Button
+          type="submit"
+          variant="contained"
+          size="small"
+          style={{ backgroundColor }}
+        >
+          Sign Up
+        </Button>
       </form>
-      <Link to="/login">Login</Link>
     </div>
   );
 };
