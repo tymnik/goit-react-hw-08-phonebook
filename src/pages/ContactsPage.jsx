@@ -5,7 +5,7 @@ import Filter from 'components/Filter/Filter';
 const Contacts = () => {
   return (
     <div>
-      <h2 style={{ paddingLeft: '20px' }}>Phonebook</h2>
+      <h2 style={{ paddingLeft: '20px', paddingTop: '20px' }}>Phonebook</h2>
       <ContactForm />
       <div>
         <h2 style={{ paddingLeft: '20px' }}>Contacts</h2>
