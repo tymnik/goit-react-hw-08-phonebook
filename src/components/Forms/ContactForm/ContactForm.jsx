@@ -70,7 +70,7 @@ const ContactForm = () => {
           className={styles.inputField}
         />
       </label>
-      <Button sx={{ color }}>Add Contact</Button>
+      <Button type='submit' sx={{ color }}>Add Contact</Button>
     </form>
   );
 };
