@@ -14,9 +14,10 @@ import { filterReducer } from './filter/slice';
 import { authReducer } from './auth/slice';
 
 const persistConfig = {
-  key: 'contacts',
+  key: 'auth',
   storage,
-  whitelist: ['contacts'],
+  whitelist: ['token'],
+  version: 1,
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
