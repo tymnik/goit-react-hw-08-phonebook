@@ -21,7 +21,7 @@ const FormLogin = () => {
       .then(res => {
         toast.success('Hi, there!', {
           position: 'top-center',
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -33,7 +33,7 @@ const FormLogin = () => {
       .catch(e => {
         toast.warn('Oops! Invalid email or password!', {
           position: 'top-center',
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

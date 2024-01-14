@@ -2,6 +2,7 @@ import { useAuth } from 'hooks/useAuth';
 import { useState } from 'react';
 import { addContact } from 'store/contacts/operations';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import styles from './ContactForm.module.css';
 import Button from '@mui/material/Button';
 import { orange } from '@mui/material/colors';
@@ -23,7 +24,17 @@ const ContactForm = () => {
     );
 
     if (isDuplicate) {
-      alert(`${name} is already in contacts.`);
+      toast.warn(`${name} is already in contacts.`, {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+      return;
     } else {
       const newContact = {
         name: name,
@@ -41,8 +52,7 @@ const ContactForm = () => {
     else if (name === 'number') setNumber(value);
   };
 
-    const color = orange[500];
-
+  const color = orange[500];
 
   return (
     <form onSubmit={addNewContact} className={styles.inputForm}>
@@ -54,7 +64,6 @@ const ContactForm = () => {
           value={name}
           onChange={handleChange}
           required
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           className={styles.inputField}
         />
       </label>
@@ -66,11 +75,12 @@ const ContactForm = () => {
           value={number}
           onChange={handleChange}
           required
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           className={styles.inputField}
         />
       </label>
-      <Button type='submit' sx={{ color }}>Add Contact</Button>
+      <Button type="submit" sx={{ color }}>
+        Add Contact
+      </Button>
     </form>
   );
 };
